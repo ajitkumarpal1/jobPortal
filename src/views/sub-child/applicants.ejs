@@ -1,0 +1,36 @@
+<div>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Resume</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <%
+                if(applicant.applys){ applicant.applys.forEach(element=>{%>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><%=element.name%></td>
+                    <td><%=element.email%></td>
+                    <td><%=element.contact%></td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="/<%=element.resumeUrl%>"
+                            target="_blank">view</a>
+                    </td>
+                </tr>
+                <%}) }else{%>
+                    <tr>
+                        <td colspan="5" style="text-align: center;"><h1>No Applicant</h1></td>
+                    </tr>
+                <%}%>
+
+            </tbody>
+        </tabl
+        
+</div>

@@ -1,0 +1,76 @@
+<div class="pt-5" style="background-color: #181642;">
+    <div class="container p-3 mx-auto form-box" style="max-width: 600px;">
+        <div class="card my-5 rounded-md bg-light ">
+            <div class="card-body">
+                <h2 style="color: #181642" class="text-center mb-3">Post a New Job</h2>
+                <form action="/job" method="post">
+                    <div class="mb-3">
+                        <label for="jobCategory" class="form-label">Job Category</label>
+                        <select required name="job_category" id="jobCategory" class="form-select">
+                            <option selected disabled>Select job category</option>
+                            <% jobMetaData.jobCategory.forEach(element=> { %>
+                                <option value="<%= element %>">
+                                    <%= element %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="jobDesignation" class="form-label">Job Designation</label>
+                        <select required name="job_designation" id="jobDesignation" class="form-select">
+                            <option selected disabled>Select job designation</option>
+                            <% jobMetaData.jobDesignation.forEach(element=> { %>
+                                <option value="<%= element %>">
+                                    <%= element %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="jobLocation" class="form-label">Job Location</label>
+                        <input required name="job_location" type="text" class="form-control" id="jobLocation">
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="companyName" class="form-label">Company Name</label>
+                        <input required name="company_name" type="text" class="form-control" id="companyName">
+                    </div>
+    
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="salary" class="form-label">Salary</label>
+                            <input required name="salary" type="text" class="form-control" id="salary"
+                                placeholder="Enter salary">
+                        </div>
+                        <div class="col">
+                            <label for="numberOfOpenings" class="form-label">Total Positions</label>
+                            <input required name="number_of_openings" type="number" class="form-control"
+                                id="numberOfOpenings" placeholder="Total number of openings">
+                        </div>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="skillsRequired" class="form-label">Select skills required for this job</label>
+                        <select required multiple name="skills_required" id="skillsRequired" class="form-select">
+                            <% jobMetaData.skills.forEach(element=> { %>
+                                <option value="<%= element %>">
+                                    <%= element %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="applyBy" class="form-label">Apply By</label>
+                        <input name="apply_by" type="date" class="form-control" id="applyBy" min="<%= (() => { const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1); return tomorrow.toISOString().split('T')[0]; })() %>">
+
+                    </div>
+    
+                    <button class="w-100 mb-3 mt-2 btn btn-success" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

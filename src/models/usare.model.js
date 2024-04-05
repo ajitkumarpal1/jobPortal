@@ -83,6 +83,18 @@ export const postJobMetaData = {
     ]
 }
 export class userMetaData {
+    search(search) {
+        search = search.toLowerCase()
+        const newSearch = {};
+        Object.keys(jobsList).forEach(key => {
+            const job = jobsList[key];
+            /* CANVARTIC ARR TO STRING AND ALL OTHER META DATA FO SEARCH FOR THE SEARCH IT SHOULD BE SAME TYPE THATS WHY I AM CANVERTING AL STRING IN TO LOWER CASEW */
+            if (job.job_category.toLowerCase().match(search) || job.company_name.toLowerCase().match(search) || job.skills_required.join(', ').toLowerCase().match(search) || job.job_location.toLowerCase().match(search)) {
+                newSearch[key] = job;
+            }
+        });
+        return newSearch;
+    }
     addNewJob(obj){
         jobsList[gunrateId()] = obj;
     }

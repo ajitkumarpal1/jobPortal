@@ -12,19 +12,36 @@ export default class pages {
     res.render("sub-child/home",{data : userData(req.session.email)});
   };
   jobs(req, res) {
-    res.render("sub-child/jobs",{
-      data : userData(req.session.email),
-      jobsList : jobsList
-    });
+    console.log(req.query)
+    if(!req.query.search){
+      res.render("sub-child/jobs",{
+        data : userData(req.session.email),
+        jobsList : jobsList
+      });
+    }else{
+      res.render("sub-child/jobs",{
+        data : userData(req.session.email),
+        jobsList : UMD.search(req.query.search) /* yhape */
+      });
+    }
+    
   }
   job(req, res) {
     /* console.log(UMD.getParticularJob(req.params.jobId)) */
-    console.log(userData(req.session.email))
-    res.render("sub-child/job",{
-      data : userData(req.session.email),
-      jobData : UMD.getParticularJob(req.params.jobId),
-      aplyId: req.params.jobId
-    });
+    
+    const GPJ = UMD.getParticularJob(req.params.jobId);
+    if(GPJ){
+      res.render("sub-child/job",{
+        data : userData(req.session.email),
+        jobData : GPJ,
+        aplyId: req.params.jobId
+      });
+    }
+    else{
+      res.render("404",{data : userData(req.session.email)
+        ,error:"This Job was removed or URL is incarect 🤡"
+      }); 
+    }
   }
   applicants(req, res) {
     console.log(UMD.getParticularJob(req.params.applicantId))
@@ -40,7 +57,7 @@ export default class pages {
         jobMetaData:postJobMetaData,
       });
     }
-    res.render("404",{data : userData(req.session.email)}); 
+    res.render("404",{data : userData(req.session.email),error:"only recruiter is allowed to access this page, login as recruiter to continue"}); 
   }
   login(req, res) {
     res.render("login", { "layout": false });
@@ -50,5 +67,10 @@ export default class pages {
       data : userData(req.session.email),
       /* "layout": false */
    });
+  }
+  notFound(req,res){
+    res.render("404",{data : userData(req.session.email)
+      ,error:"Page Not Found 🙄"
+    }); 
   }
 }

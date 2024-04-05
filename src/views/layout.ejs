@@ -60,17 +60,22 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
+                <div class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" id="search" aria-label="Search" />
+                    <button class="btn btn-outline-success" id="searchBtn">
                         Search
                     </button>
-                </form>
+                </div>
             </div>
         </div>
     </nav>
     <%-body%>
-    
+    <script>
+        document.getElementById("searchBtn").addEventListener("click",()=>{
+            
+            window.location.href =`/jobs?search=${document.getElementById("search").value}`;
+        })
+    </script>
 </body>
 
 </html>

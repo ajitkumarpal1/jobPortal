@@ -39,7 +39,11 @@
                         </a>
                     </div>
                 </div>
-            <%})%>
+            <%}) %>
+            <%if(Object.keys(jobsList).length === 0){%>
+                <h1>No job Match</h1>
+            <%}%>
+            
         </div>
     </div>
 </div>

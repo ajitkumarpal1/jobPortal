@@ -1,6 +1,7 @@
 {
   "name": "easily",
   "version": "1.0.0",
+  "git":"https://github.com/ajitkumarpal1/jobPortal",
   "type": "module",
   "description": "here you can fide new job candidates and alse if you are job sicare you can gat some good job ofers",
   "main": "server.js",

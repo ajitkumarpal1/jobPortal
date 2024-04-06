@@ -30,11 +30,12 @@ app.get("/job/applicants/:applicantId",page.applicants)
 app.get("/postjob",page.postjob)
 app.get("/login",page.login)
 app.get("/register",page.register)
-app.get("/*",page.notFound)
+
 
 app.get("/logout",data.logout)
 app.post("/register",data.register) //ragistration of new user
 app.post("/login",data.getuser) 
 app.post("/job",data.job) //post jobs
 app.post("/apply/:jobId", uploadFile.single('resume'), data.apply)
+app.get("/*",page.notFound)
 export default app

@@ -5,6 +5,8 @@ import { metaData } from "./src/cantrille/cantroller.data-manipulation.js";
 import path from "path";
 import session from "express-session";
 import { uploadFile } from "./src/models/model.uplod-cv.js";
+import dotevn from "dotenv";
+dotevn.config();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

@@ -1,7 +1,7 @@
 {
   "name": "easily",
   "version": "1.0.0",
-  "git":"https://github.com/ajitkumarpal1/jobPortal",
+  "git": "https://github.com/ajitkumarpal1/jobPortal",
   "type": "module",
   "description": "here you can fide new job candidates and alse if you are job sicare you can gat some good job ofers",
   "main": "server.js",
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",

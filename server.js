@@ -1,5 +1,5 @@
 import server from "./index.js"
 
-server.listen(5000, () => {
-    console.log("server is runig on port 5000")
+server.listen(process.env.PORT, () => {
+    console.log(`server is runig on port ${process.env.PORT}`)
 })
